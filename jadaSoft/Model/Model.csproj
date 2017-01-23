@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,9 +58,11 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>jadaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClienteDTO.cs" />
     <Compile Include="Estado.cs">
       <DependentUpon>jadaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EstadoDTO.cs" />
     <Compile Include="Incidencia.cs">
       <DependentUpon>jadaModel.tt</DependentUpon>
     </Compile>
