@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jadaSoft", "jadaSoft\jadaSoft.csproj", "{6C736A84-42F0-487F-9611-4019A2EAECFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "jadaSoft\View.csproj", "{6C736A84-42F0-487F-9611-4019A2EAECFC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ECEC3DB7-67F5-4DE2-8580-4EB6DB384DF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{BEF7C5E9-1D03-42BD-815C-13C6F182DD03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{E5103605-A572-447E-9C87-F6DBBA93D520}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +21,14 @@ Global
 		{6C736A84-42F0-487F-9611-4019A2EAECFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C736A84-42F0-487F-9611-4019A2EAECFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C736A84-42F0-487F-9611-4019A2EAECFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEF7C5E9-1D03-42BD-815C-13C6F182DD03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEF7C5E9-1D03-42BD-815C-13C6F182DD03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEF7C5E9-1D03-42BD-815C-13C6F182DD03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEF7C5E9-1D03-42BD-815C-13C6F182DD03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5103605-A572-447E-9C87-F6DBBA93D520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5103605-A572-447E-9C87-F6DBBA93D520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5103605-A572-447E-9C87-F6DBBA93D520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5103605-A572-447E-9C87-F6DBBA93D520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

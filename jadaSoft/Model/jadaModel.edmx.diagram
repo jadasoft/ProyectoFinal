@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="89866bbb42d84e629cffeaf8bf462d8f" Name="Diagram1">
+        <EntityTypeShape EntityType="JADAModel.Cliente" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JADAModel.Estado" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JADAModel.Incidencia" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JADAModel.Paquete" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JADAModel.Servicio" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JADAModel.Stock" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JADAModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JADAModel.Trabajador" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="JADAModel.FK_Cliente_Paquete" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.FK_Servicio_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.FK_Servicio_Paquete" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.FK_Stock_Paquete" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.FK_Stock_Trabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.EstadoPaquete" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.IncidenciaServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.PaqueteCliente" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.StockPaquete" ManuallyRouted="false" />
+        <AssociationConnector Association="JADAModel.StockTrabajador" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

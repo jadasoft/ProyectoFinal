@@ -1,0 +1,895 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JADAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellido1" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellido2" Type="nchar" MaxLength="15" />
+          <Property Name="dni" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="direccion" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="id_paquete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="estado" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="comentario" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="dia_hora" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EstadoPaquete">
+          <Key>
+            <PropertyRef Name="id_estado" />
+            <PropertyRef Name="id_paquete" />
+          </Key>
+          <Property Name="id_estado" Type="int" Nullable="false" />
+          <Property Name="id_paquete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dia_hora" Type="datetime" />
+          <Property Name="comentario" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="IncidenciaServicio">
+          <Key>
+            <PropertyRef Name="id_servicio" />
+            <PropertyRef Name="id_incidencia" />
+          </Key>
+          <Property Name="id_servicio" Type="int" Nullable="false" />
+          <Property Name="id_incidencia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paquete">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="destino" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="peso" Type="float" Nullable="false" />
+          <Property Name="fragil" Type="bit" />
+          <Property Name="telf_destino" Type="nchar" MaxLength="15" />
+          <Property Name="comentarios" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PaqueteCliente">
+          <Key>
+            <PropertyRef Name="id_paquete" />
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_paquete" Type="int" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hora_dia_llegadaEstimada" Type="datetime" />
+          <Property Name="hora_dia_abierto" Type="datetime" Nullable="false" />
+          <Property Name="precio_servicio" Type="float" Nullable="false" />
+          <Property Name="nota_faena" Type="float" Nullable="false" />
+          <Property Name="travel_ini" Type="datetime" Nullable="false" />
+          <Property Name="travel_fin" Type="datetime" Nullable="false" />
+          <Property Name="firma_dig" Type="image" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="id_paquete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_recepcion" Type="date" Nullable="false" />
+          <Property Name="data_retorno" Type="date" />
+          <Property Name="id_paquete" Type="int" Nullable="false" />
+          <Property Name="id_trabajador" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockPaquete">
+          <Key>
+            <PropertyRef Name="id_stock" />
+            <PropertyRef Name="id_paquete" />
+          </Key>
+          <Property Name="id_stock" Type="int" Nullable="false" />
+          <Property Name="id_paquete" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StockTrabajador">
+          <Key>
+            <PropertyRef Name="id_trabajador" />
+            <PropertyRef Name="id_stock" />
+          </Key>
+          <Property Name="id_trabajador" Type="int" Nullable="false" />
+          <Property Name="id_stock" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="nombre" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellido1" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="apellido2" Type="nchar" MaxLength="15" />
+          <Property Name="dni" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cliente_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoPaquete_Estado">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+          <End Role="EstadoPaquete" Type="Self.EstadoPaquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EstadoPaquete">
+              <PropertyRef Name="id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstadoPaquete_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="EstadoPaquete" Type="Self.EstadoPaquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EstadoPaquete">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IncidenciaServicio_Incidencia">
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="1" />
+          <End Role="IncidenciaServicio" Type="Self.IncidenciaServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incidencia">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IncidenciaServicio">
+              <PropertyRef Name="id_incidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IncidenciaServicio_Servicio">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+          <End Role="IncidenciaServicio" Type="Self.IncidenciaServicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IncidenciaServicio">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaqueteCliente_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PaqueteCliente" Type="Self.PaqueteCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaqueteCliente">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaqueteCliente_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="PaqueteCliente" Type="Self.PaqueteCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaqueteCliente">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_trabajador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockPaquete_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="StockPaquete" Type="Self.StockPaquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StockPaquete">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockPaquete_Stock">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="1" />
+          <End Role="StockPaquete" Type="Self.StockPaquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StockPaquete">
+              <PropertyRef Name="id_stock" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockTrabajador_Stock">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="1" />
+          <End Role="StockTrabajador" Type="Self.StockTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StockTrabajador">
+              <PropertyRef Name="id_stock" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockTrabajador_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="StockTrabajador" Type="Self.StockTrabajador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="StockTrabajador">
+              <PropertyRef Name="id_trabajador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="JADAModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estado" EntityType="Self.Estado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoPaquete" EntityType="Self.EstadoPaquete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incidencia" EntityType="Self.Incidencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncidenciaServicio" EntityType="Self.IncidenciaServicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paquete" EntityType="Self.Paquete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaqueteCliente" EntityType="Self.PaqueteCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockPaquete" EntityType="Self.StockPaquete" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockTrabajador" EntityType="Self.StockTrabajador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trabajador" EntityType="Self.Trabajador" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cliente_Paquete" Association="Self.FK_Cliente_Paquete">
+            <End Role="Paquete" EntitySet="Paquete" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoPaquete_Estado" Association="Self.FK_EstadoPaquete_Estado">
+            <End Role="Estado" EntitySet="Estado" />
+            <End Role="EstadoPaquete" EntitySet="EstadoPaquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstadoPaquete_Paquete" Association="Self.FK_EstadoPaquete_Paquete">
+            <End Role="Paquete" EntitySet="Paquete" />
+            <End Role="EstadoPaquete" EntitySet="EstadoPaquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IncidenciaServicio_Incidencia" Association="Self.FK_IncidenciaServicio_Incidencia">
+            <End Role="Incidencia" EntitySet="Incidencia" />
+            <End Role="IncidenciaServicio" EntitySet="IncidenciaServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IncidenciaServicio_Servicio" Association="Self.FK_IncidenciaServicio_Servicio">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="IncidenciaServicio" EntitySet="IncidenciaServicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaqueteCliente_Cliente" Association="Self.FK_PaqueteCliente_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PaqueteCliente" EntitySet="PaqueteCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaqueteCliente_Paquete" Association="Self.FK_PaqueteCliente_Paquete">
+            <End Role="Paquete" EntitySet="Paquete" />
+            <End Role="PaqueteCliente" EntitySet="PaqueteCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Cliente" Association="Self.FK_Servicio_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Paquete" Association="Self.FK_Servicio_Paquete">
+            <End Role="Paquete" EntitySet="Paquete" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Paquete" Association="Self.FK_Stock_Paquete">
+            <End Role="Paquete" EntitySet="Paquete" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Trabajador" Association="Self.FK_Stock_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockPaquete_Paquete" Association="Self.FK_StockPaquete_Paquete">
+            <End Role="Paquete" EntitySet="Paquete" />
+            <End Role="StockPaquete" EntitySet="StockPaquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockPaquete_Stock" Association="Self.FK_StockPaquete_Stock">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="StockPaquete" EntitySet="StockPaquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockTrabajador_Stock" Association="Self.FK_StockTrabajador_Stock">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="StockTrabajador" EntitySet="StockTrabajador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockTrabajador_Trabajador" Association="Self.FK_StockTrabajador_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajador" />
+            <End Role="StockTrabajador" EntitySet="StockTrabajador" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JADAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="dni" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="id_paquete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paquete" Relationship="Self.FK_Cliente_Paquete" FromRole="Cliente" ToRole="Paquete" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicio_Cliente" FromRole="Cliente" ToRole="Servicio" />
+          <NavigationProperty Name="Paquetes" Relationship="Self.PaqueteCliente" FromRole="Cliente" ToRole="Paquete" />
+        </EntityType>
+        <EntityType Name="Estado">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estado1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="comentario" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="dia_hora" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Paquetes" Relationship="Self.EstadoPaquete" FromRole="Estado" ToRole="Paquete" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dia_hora" Type="DateTime" Precision="3" />
+          <Property Name="comentario" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Servicios" Relationship="Self.IncidenciaServicio" FromRole="Incidencia" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Paquete">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="destino" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="peso" Type="Double" Nullable="false" />
+          <Property Name="fragil" Type="Boolean" />
+          <Property Name="telf_destino" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="comentarios" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Cliente_Paquete" FromRole="Paquete" ToRole="Cliente" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK_Servicio_Paquete" FromRole="Paquete" ToRole="Servicio" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK_Stock_Paquete" FromRole="Paquete" ToRole="Stock" />
+          <NavigationProperty Name="Estadoes" Relationship="Self.EstadoPaquete" FromRole="Paquete" ToRole="Estado" />
+          <NavigationProperty Name="Clientes1" Relationship="Self.PaqueteCliente" FromRole="Paquete" ToRole="Cliente" />
+          <NavigationProperty Name="Stocks1" Relationship="Self.StockPaquete" FromRole="Paquete" ToRole="Stock" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hora_dia_llegadaEstimada" Type="DateTime" Precision="3" />
+          <Property Name="hora_dia_abierto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="precio_servicio" Type="Double" Nullable="false" />
+          <Property Name="nota_faena" Type="Double" Nullable="false" />
+          <Property Name="travel_ini" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="travel_fin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="firma_dig" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="id_paquete" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Servicio_Cliente" FromRole="Servicio" ToRole="Cliente" />
+          <NavigationProperty Name="Paquete" Relationship="Self.FK_Servicio_Paquete" FromRole="Servicio" ToRole="Paquete" />
+          <NavigationProperty Name="Incidencias" Relationship="Self.IncidenciaServicio" FromRole="Servicio" ToRole="Incidencia" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_recepcion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data_retorno" Type="DateTime" Precision="0" />
+          <Property Name="id_paquete" Type="Int32" Nullable="false" />
+          <Property Name="id_trabajador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paquete" Relationship="Self.FK_Stock_Paquete" FromRole="Stock" ToRole="Paquete" />
+          <NavigationProperty Name="Trabajador" Relationship="Self.FK_Stock_Trabajador" FromRole="Stock" ToRole="Trabajador" />
+          <NavigationProperty Name="Paquetes" Relationship="Self.StockPaquete" FromRole="Stock" ToRole="Paquete" />
+          <NavigationProperty Name="Trabajadors" Relationship="Self.StockTrabajador" FromRole="Stock" ToRole="Trabajador" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Trabajador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="dni" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK_Stock_Trabajador" FromRole="Trabajador" ToRole="Stock" />
+          <NavigationProperty Name="Stocks1" Relationship="Self.StockTrabajador" FromRole="Trabajador" ToRole="Stock" />
+        </EntityType>
+        <Association Name="FK_Cliente_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Paquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_paquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stock_Trabajador">
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajador">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_trabajador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EstadoPaquete">
+          <End Role="Estado" Type="Self.Estado" Multiplicity="*" />
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="*" />
+        </Association>
+        <Association Name="IncidenciaServicio">
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+        </Association>
+        <Association Name="PaqueteCliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="*" />
+        </Association>
+        <Association Name="StockPaquete">
+          <End Role="Paquete" Type="Self.Paquete" Multiplicity="*" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+        </Association>
+        <Association Name="StockTrabajador">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <End Role="Trabajador" Type="Self.Trabajador" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="JADAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Estadoes" EntityType="Self.Estado" />
+          <EntitySet Name="Incidencias" EntityType="Self.Incidencia" />
+          <EntitySet Name="Paquetes" EntityType="Self.Paquete" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicio" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Trabajadors" EntityType="Self.Trabajador" />
+          <AssociationSet Name="FK_Cliente_Paquete" Association="Self.FK_Cliente_Paquete">
+            <End Role="Paquete" EntitySet="Paquetes" />
+            <End Role="Cliente" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Cliente" Association="Self.FK_Servicio_Cliente">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Servicio" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Paquete" Association="Self.FK_Servicio_Paquete">
+            <End Role="Paquete" EntitySet="Paquetes" />
+            <End Role="Servicio" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Paquete" Association="Self.FK_Stock_Paquete">
+            <End Role="Paquete" EntitySet="Paquetes" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stock_Trabajador" Association="Self.FK_Stock_Trabajador">
+            <End Role="Trabajador" EntitySet="Trabajadors" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="EstadoPaquete" Association="Self.EstadoPaquete">
+            <End Role="Estado" EntitySet="Estadoes" />
+            <End Role="Paquete" EntitySet="Paquetes" />
+          </AssociationSet>
+          <AssociationSet Name="IncidenciaServicio" Association="Self.IncidenciaServicio">
+            <End Role="Incidencia" EntitySet="Incidencias" />
+            <End Role="Servicio" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="PaqueteCliente" Association="Self.PaqueteCliente">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="Paquete" EntitySet="Paquetes" />
+          </AssociationSet>
+          <AssociationSet Name="StockPaquete" Association="Self.StockPaquete">
+            <End Role="Paquete" EntitySet="Paquetes" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="StockTrabajador" Association="Self.StockTrabajador">
+            <End Role="Stock" EntitySet="Stocks" />
+            <End Role="Trabajador" EntitySet="Trabajadors" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(JADAModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(JADAModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JADAModelStoreContainer" CdmEntityContainer="JADAEntities">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="JADAModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="id_paquete" ColumnName="id_paquete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estadoes">
+            <EntityTypeMapping TypeName="JADAModel.Estado">
+              <MappingFragment StoreEntitySet="Estado">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="estado1" ColumnName="estado" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="dia_hora" ColumnName="dia_hora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidencias">
+            <EntityTypeMapping TypeName="JADAModel.Incidencia">
+              <MappingFragment StoreEntitySet="Incidencia">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dia_hora" ColumnName="dia_hora" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paquetes">
+            <EntityTypeMapping TypeName="JADAModel.Paquete">
+              <MappingFragment StoreEntitySet="Paquete">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="fragil" ColumnName="fragil" />
+                <ScalarProperty Name="telf_destino" ColumnName="telf_destino" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="JADAModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="hora_dia_llegadaEstimada" ColumnName="hora_dia_llegadaEstimada" />
+                <ScalarProperty Name="hora_dia_abierto" ColumnName="hora_dia_abierto" />
+                <ScalarProperty Name="precio_servicio" ColumnName="precio_servicio" />
+                <ScalarProperty Name="nota_faena" ColumnName="nota_faena" />
+                <ScalarProperty Name="travel_ini" ColumnName="travel_ini" />
+                <ScalarProperty Name="travel_fin" ColumnName="travel_fin" />
+                <ScalarProperty Name="firma_dig" ColumnName="firma_dig" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id_paquete" ColumnName="id_paquete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="JADAModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="data_recepcion" ColumnName="data_recepcion" />
+                <ScalarProperty Name="data_retorno" ColumnName="data_retorno" />
+                <ScalarProperty Name="id_paquete" ColumnName="id_paquete" />
+                <ScalarProperty Name="id_trabajador" ColumnName="id_trabajador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="JADAModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trabajadors">
+            <EntityTypeMapping TypeName="JADAModel.Trabajador">
+              <MappingFragment StoreEntitySet="Trabajador">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="EstadoPaquete" TypeName="JADAModel.EstadoPaquete" StoreEntitySet="EstadoPaquete">
+            <EndProperty Name="Estado">
+              <ScalarProperty Name="id" ColumnName="id_estado" />
+            </EndProperty>
+            <EndProperty Name="Paquete">
+              <ScalarProperty Name="id" ColumnName="id_paquete" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="IncidenciaServicio" TypeName="JADAModel.IncidenciaServicio" StoreEntitySet="IncidenciaServicio">
+            <EndProperty Name="Incidencia">
+              <ScalarProperty Name="id" ColumnName="id_incidencia" />
+            </EndProperty>
+            <EndProperty Name="Servicio">
+              <ScalarProperty Name="id" ColumnName="id_servicio" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PaqueteCliente" TypeName="JADAModel.PaqueteCliente" StoreEntitySet="PaqueteCliente">
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="id" ColumnName="id_cliente" />
+            </EndProperty>
+            <EndProperty Name="Paquete">
+              <ScalarProperty Name="id" ColumnName="id_paquete" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="StockPaquete" TypeName="JADAModel.StockPaquete" StoreEntitySet="StockPaquete">
+            <EndProperty Name="Paquete">
+              <ScalarProperty Name="id" ColumnName="id_paquete" />
+            </EndProperty>
+            <EndProperty Name="Stock">
+              <ScalarProperty Name="id" ColumnName="id_stock" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="StockTrabajador" TypeName="JADAModel.StockTrabajador" StoreEntitySet="StockTrabajador">
+            <EndProperty Name="Stock">
+              <ScalarProperty Name="id" ColumnName="id_stock" />
+            </EndProperty>
+            <EndProperty Name="Trabajador">
+              <ScalarProperty Name="id" ColumnName="id_trabajador" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="JADAModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="JADAModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="JADAModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="JADAModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JADAModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="JADAModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JADAModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="JADAModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="JADAModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
