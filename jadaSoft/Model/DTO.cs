@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Program
+    public interface DTO<T>
     {
-        static void Main(string[] args)
-        {
-        }
+        T castFrom(IEnumerable<T> src);
     }
 }

@@ -81,7 +81,7 @@
     <Compile Include="Paquete.cs">
       <DependentUpon>jadaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="DTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio.cs">
       <DependentUpon>jadaModel.tt</DependentUpon>
