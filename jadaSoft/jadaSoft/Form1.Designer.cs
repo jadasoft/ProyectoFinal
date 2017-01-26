@@ -35,7 +35,16 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.pBjada = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pBjada)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btoOk
@@ -55,20 +64,21 @@
             this.btoRegistre.TabIndex = 1;
             this.btoRegistre.Text = "Register";
             this.btoRegistre.UseVisualStyleBackColor = true;
+            this.btoRegistre.Click += new System.EventHandler(this.btoRegistre_Click);
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(182, 120);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(182, 164);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
-            this.txtPassword.TabIndex = 3;
+            this.txtPassword.TabIndex = 2;
             // 
             // lblName
             // 
@@ -91,18 +101,79 @@
             // pBjada
             // 
             this.pBjada.Image = global::jadaSoft.Properties.Resources.jada;
-            this.pBjada.Location = new System.Drawing.Point(158, 29);
+            this.pBjada.Location = new System.Drawing.Point(157, 39);
             this.pBjada.Name = "pBjada";
             this.pBjada.Size = new System.Drawing.Size(100, 50);
             this.pBjada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pBjada.TabIndex = 6;
             this.pBjada.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::jadaSoft.Properties.Resources.info;
+            this.pictureBox1.Location = new System.Drawing.Point(358, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(29, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(399, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.oToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // oToolStripMenuItem
+            // 
+            this.oToolStripMenuItem.Name = "oToolStripMenuItem";
+            this.oToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.oToolStripMenuItem.Text = "Exit";
+            this.oToolStripMenuItem.Click += new System.EventHandler(this.oToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.infoToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.infoToolStripMenuItem.Text = "info";
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(179, 216);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(57, 13);
+            this.lblInfo.TabIndex = 10;
+            this.lblInfo.Text = "\"\"\"\"\"\"\"\"\"\"";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 295);
+            this.Controls.Add(this.lblInfo);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pBjada);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblName);
@@ -110,9 +181,14 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btoRegistre);
             this.Controls.Add(this.btoOk);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Jada Soft";
             ((System.ComponentModel.ISupportInitialize)(this.pBjada)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,6 +203,13 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.PictureBox pBjada;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
+        private System.Windows.Forms.Label lblInfo;
     }
 }
 
