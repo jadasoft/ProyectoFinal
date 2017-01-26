@@ -28,33 +28,105 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btoOk = new System.Windows.Forms.Button();
+            this.btoRegistre = new System.Windows.Forms.Button();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.pBjada = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pBjada)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btoOk
             // 
-            this.button1.Location = new System.Drawing.Point(103, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btoOk.Location = new System.Drawing.Point(112, 248);
+            this.btoOk.Name = "btoOk";
+            this.btoOk.Size = new System.Drawing.Size(75, 23);
+            this.btoOk.TabIndex = 0;
+            this.btoOk.Text = "Login";
+            this.btoOk.UseVisualStyleBackColor = true;
+            // 
+            // btoRegistre
+            // 
+            this.btoRegistre.Location = new System.Drawing.Point(218, 248);
+            this.btoRegistre.Name = "btoRegistre";
+            this.btoRegistre.Size = new System.Drawing.Size(75, 23);
+            this.btoRegistre.TabIndex = 1;
+            this.btoRegistre.Text = "Register";
+            this.btoRegistre.UseVisualStyleBackColor = true;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(182, 120);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.TabIndex = 2;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(182, 164);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 3;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(98, 123);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 4;
+            this.lblName.Text = "Name";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(98, 170);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(53, 13);
+            this.lblPassword.TabIndex = 5;
+            this.lblPassword.Text = "Password";
+            // 
+            // pBjada
+            // 
+            this.pBjada.Image = global::jadaSoft.Properties.Resources.jada;
+            this.pBjada.Location = new System.Drawing.Point(158, 29);
+            this.pBjada.Name = "pBjada";
+            this.pBjada.Size = new System.Drawing.Size(100, 50);
+            this.pBjada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBjada.TabIndex = 6;
+            this.pBjada.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(399, 295);
+            this.Controls.Add(this.pBjada);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.btoRegistre);
+            this.Controls.Add(this.btoOk);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Jada Soft";
+            ((System.ComponentModel.ISupportInitialize)(this.pBjada)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btoOk;
+        private System.Windows.Forms.Button btoRegistre;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.PictureBox pBjada;
     }
 }
 
