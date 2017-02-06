@@ -26,7 +26,7 @@ namespace Controller
             mainView.Show();
            // db = new JADAEntities();
 
-            //initListeners();
+            //initListeners();//
         }
 
         /**
