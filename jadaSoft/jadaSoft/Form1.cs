@@ -11,11 +11,11 @@ using System.Windows.Forms;
 namespace jadaSoft
 {
 
-  
+   
     public partial class Form1 : Form
     {
 
-        
+     
 
 
         public Form1()
@@ -31,6 +31,14 @@ namespace jadaSoft
         private void btoRegistre_Click(object sender, EventArgs e)
         {
              
+        }
+
+        private void btoOk_Click(object sender, EventArgs e)
+        {
+            FWorking tv = new FWorking();
+            tv.Show();
+           
+
         }
     }
 }

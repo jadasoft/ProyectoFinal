@@ -34,17 +34,17 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.pBjada = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblInfo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pBjada)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pBjada = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBjada)).BeginInit();
             this.SuspendLayout();
             // 
             // btoOk
@@ -55,6 +55,7 @@
             this.btoOk.TabIndex = 0;
             this.btoOk.Text = "Login";
             this.btoOk.UseVisualStyleBackColor = true;
+            this.btoOk.Click += new System.EventHandler(this.btoOk_Click);
             // 
             // btoRegistre
             // 
@@ -98,26 +99,6 @@
             this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password";
             // 
-            // pBjada
-            // 
-            this.pBjada.Image = global::jadaSoft.Properties.Resources.jada;
-            this.pBjada.Location = new System.Drawing.Point(157, 39);
-            this.pBjada.Name = "pBjada";
-            this.pBjada.Size = new System.Drawing.Size(100, 50);
-            this.pBjada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pBjada.TabIndex = 6;
-            this.pBjada.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::jadaSoft.Properties.Resources.info;
-            this.pictureBox1.Location = new System.Drawing.Point(358, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(29, 25);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -140,7 +121,7 @@
             // oToolStripMenuItem
             // 
             this.oToolStripMenuItem.Name = "oToolStripMenuItem";
-            this.oToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.oToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.oToolStripMenuItem.Text = "Exit";
             this.oToolStripMenuItem.Click += new System.EventHandler(this.oToolStripMenuItem_Click);
             // 
@@ -155,7 +136,7 @@
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.infoToolStripMenuItem.Text = "info";
             // 
             // lblInfo
@@ -166,6 +147,26 @@
             this.lblInfo.Size = new System.Drawing.Size(57, 13);
             this.lblInfo.TabIndex = 10;
             this.lblInfo.Text = "\"\"\"\"\"\"\"\"\"\"";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::jadaSoft.Properties.Resources.info;
+            this.pictureBox1.Location = new System.Drawing.Point(358, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(29, 25);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pBjada
+            // 
+            this.pBjada.Image = global::jadaSoft.Properties.Resources.jada;
+            this.pBjada.Location = new System.Drawing.Point(157, 39);
+            this.pBjada.Name = "pBjada";
+            this.pBjada.Size = new System.Drawing.Size(100, 50);
+            this.pBjada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBjada.TabIndex = 6;
+            this.pBjada.TabStop = false;
             // 
             // Form1
             // 
@@ -185,10 +186,10 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Jada Soft";
-            ((System.ComponentModel.ISupportInitialize)(this.pBjada)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBjada)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
