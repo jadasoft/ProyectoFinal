@@ -4,25 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-using jadaSoft;
+using jadaSoftNew;
 using System.Windows.Forms;
-
-
-
-
-
-
+using View;
 
 namespace Controller
 {
 
-   
-
+    
     class MainController
     {
 
         protected Form1 mainView { get; }
-        protected JADAEntities db { get; }
+      //  protected JADAEntities db { get; }
 
         public MainController()
         {
@@ -30,8 +24,8 @@ namespace Controller
             Application.SetCompatibleTextRenderingDefault(false);
             mainView = new Form1();
             mainView.Show();
-            db = new JADAEntities();
-           
+           // db = new JADAEntities();
+
             //initListeners();
         }
 
@@ -226,7 +220,7 @@ namespace Controller
         // */
         public void start()
         {
-           // populateContacts();
+            // populateContacts();
             this.run();
         }
 
@@ -243,8 +237,8 @@ namespace Controller
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-              //  ExceptionThrowErrorMessage msg = new ExceptionThrowErrorMessage(ex);
-               // msg.ShowDialog();
+                //  ExceptionThrowErrorMessage msg = new ExceptionThrowErrorMessage(ex);
+                // msg.ShowDialog();
             }
         }
 

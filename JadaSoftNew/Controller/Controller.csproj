@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E5103605-A572-447E-9C87-F6DBBA93D520}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{BEA7A4C5-8421-4788-9CC0-BBE9A567E97D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Controller</RootNamespace>
     <AssemblyName>Controller</AssemblyName>
@@ -32,13 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Controller.Program</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,13 +51,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\jadaSoft\View.csproj">
-      <Project>{6c736a84-42f0-487f-9611-4019a2eaecfc}</Project>
-      <Name>View</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{bef7c5e9-1d03-42bd-815c-13c6f182dd03}</Project>
+      <Project>{4bd24cb5-f2fd-4a0c-b15e-8eb7e7128571}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\View\View.csproj">
+      <Project>{e2fa0214-c1fb-478c-bf9c-3670a4488c6e}</Project>
+      <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
