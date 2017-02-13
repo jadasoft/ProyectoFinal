@@ -171,7 +171,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::jadaSoft.Properties.Resources.info;
+            this.pictureBox2.Image = global::jadaSoft.Properties.Resources.jada;
             this.pictureBox2.Location = new System.Drawing.Point(451, 27);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(29, 25);
